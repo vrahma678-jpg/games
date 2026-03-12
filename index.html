@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gim Cinta</title>
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+
+    <!-- Library Js Lainnya -->
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- plugin alpineJS, myScript, core alpineJS -->
+    <script defer src="script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="grid min-h-screen antialiased bg-pink-200 place-content-center">
+    <main class="mx-auto rounded-xl bg-pink-100 shadow-lg" x-data="AngkaBom" @keyup.escape.window='isHint = !isHint'>
+        <form @submit.prevent="cekTebakan()" class="px-6 py-4 min-w-80">
+            <div class="text-center mb-3">
+                <h1 class="text-xl font-bold text-pink-700">Game Tebak Angka Cinta 💕</h1>
+                <p class="text-sm text-pink-600">Kalau kamu bisa menebak angka yang aman, mungkin kamu juga bisa menemukan jalan ke hatiku ❤️</p>
+            </div>
+
+            <div>
+                <label for="tebakan" class="text-pink-700 font-semibold"
+                    x-text="`Tebak angka antara ${min} sampai ${max}`"></label>
+
+                <input type="number" name="tebakan" id="tebakan" x-model="tebakan" :min="min" :max="max" required
+                    autofocus
+                    class="bg-white flex w-full px-3 rounded-lg shadow-sm min-h-[2.25rem] py-0 md:min-h-[2.5rem] border border-pink-300 outline-0 focus:border-pink-500 focus:ring-pink-500">
+            </div>
+
+            <div class="flex items-center justify-between mt-3">
+
+                <button type="button" @click="resetSemua()"
+                    class="inline-flex text-pink-800 items-center justify-center rounded-lg font-medium px-3 py-1 shadow-sm transition-colors duration-75 border border-pink-500 hover:bg-pink-500 hover:text-white active:bg-pink-600 disabled:bg-pink-300">
+                    Ulang 💗
+                </button>
+
+                <p x-text="bom" x-cloak x-show="isHint"
+                    class="text-xl font-extrabold text-red-500 drop-shadow-2xl"></p>
+
+                <button
+                    class="inline-flex bg-pink-600 text-white items-center justify-center rounded-lg font-medium px-3 py-1 shadow-sm transition-colors duration-75 border border-pink-500 hover:bg-pink-700 active:bg-pink-800">
+                    Tebak 💌
+                </button>
+
+            </div>
+
+            <p class="text-center text-pink-600 text-sm mt-3">
+                Hati-hati memilih angka ya Ardii... salah sedikit bisa membuat hatiku meledak 💣❤️
+            </p>
+
+        </form>
+    </main>
+
+</body>
+
+</html>
